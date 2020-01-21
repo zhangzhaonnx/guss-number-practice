@@ -26,7 +26,12 @@ class GussNumberGameTest {
   static Stream<Arguments> testArguments() {
     return Stream.of(
         Arguments.of("1 5 6 7", "1A0B"),
-        Arguments.of("2 4 7 8", "0A2B")
+        Arguments.of("2 4 7 8", "0A2B"),
+        Arguments.of("0 3 2 4", "1A2B"),
+        Arguments.of("5 6 7 8", "0A0B"),
+        Arguments.of("4 3 2 1", "0A4B"),
+        Arguments.of("1 2 3 4", "4A0B"),
+        Arguments.of("1 1 2 3", "Wrong Input, input again")
     );
   }
 }

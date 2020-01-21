@@ -3,9 +3,11 @@ package com.itutry.v1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class GussNumberGame {
@@ -18,6 +20,14 @@ public class GussNumberGame {
 
   public List<Entry<String, String>> guss(String input) {
     List<Integer> numbers = parseInput(input);
+
+    Set numberSet = new HashSet(numbers);
+    if (numberSet.size() < numbers.size()) {
+      String output = "Wrong Input, input again";
+      Map<String, String> map = new HashMap<>();
+      map.put(input, output);
+      return new ArrayList<>(map.entrySet());
+    }
 
     int correctCount = 0;
     int wrongPositionCount = 0;
