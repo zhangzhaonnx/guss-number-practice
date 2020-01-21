@@ -51,6 +51,9 @@ public class GussNumberGame {
   }
 
   private boolean checkNumbers(List<Integer> numbers) {
+    if (numbers.size() != answers.size()) {
+      return false;
+    }
     Set numberSet = new HashSet(numbers);
     return numberSet.size() == numbers.size();
   }

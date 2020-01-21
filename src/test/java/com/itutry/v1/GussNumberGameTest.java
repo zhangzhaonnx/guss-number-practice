@@ -31,7 +31,8 @@ class GussNumberGameTest {
         Arguments.of("5 6 7 8", "0A0B"),
         Arguments.of("4 3 2 1", "0A4B"),
         Arguments.of("1 2 3 4", "4A0B"),
-        Arguments.of("1 1 2 3", "Wrong Input, input again")
+        Arguments.of("1 1 2 3", "Wrong Input, input again"),
+        Arguments.of("1 2", "Wrong Input, input again")
     );
   }
 }
