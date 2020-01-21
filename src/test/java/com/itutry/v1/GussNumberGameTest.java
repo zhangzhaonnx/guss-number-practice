@@ -17,4 +17,13 @@ public class GussNumberGameTest {
     Assert.assertThat(result.get(0).getKey(), is("1 5 6 7"));
     Assert.assertThat(result.get(0).getValue(), is("1A0B"));
   }
+
+  @Test
+  public void should_output_0A2B() {
+    GussNumberGame game = new GussNumberGame();
+    List<Entry<String, String>> result = game.guss("2 4 7 8");
+
+    Assert.assertThat(result.get(0).getKey(), is("2 4 7 8"));
+    Assert.assertThat(result.get(0).getValue(), is("0A2B"));
+  }
 }

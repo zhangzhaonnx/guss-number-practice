@@ -18,15 +18,19 @@ public class GussNumberGame {
     List<Integer> answers = Arrays.asList(1, 2, 3, 4);
 
     int correctCount = 0;
+    int wrongPositionCount = 0;
     for (int i = 0; i < numbers.size(); i++) {
-      if (answers.contains(numbers.get(i))) {
-        correctCount++;
+      int number = numbers.get(i);
+      if (answers.contains(number)) {
+        if (number == answers.get(i)) {
+          correctCount++;
+        } else {
+          wrongPositionCount++;
+        }
       }
     }
 
-    String str = String.format("%sA%sB", correctCount, 0);
-    ArrayList<Entry<String, String>> result = new ArrayList<>();
-
+    String str = String.format("%sA%sB", correctCount, wrongPositionCount);
     Map<String, String> map = new HashMap<>();
     map.put(input, str);
     return new ArrayList<>(map.entrySet());
