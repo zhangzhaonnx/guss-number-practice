@@ -10,12 +10,14 @@ import java.util.stream.Collectors;
 
 public class GussNumberGame {
 
-  public List<Entry<String, String>> guss(String input) {
-    List<Integer> numbers = Arrays.stream(input.split(" "))
-        .map(Integer::parseInt)
-        .collect(Collectors.toList());
+  private List<Integer> answers;
 
-    List<Integer> answers = Arrays.asList(1, 2, 3, 4);
+  public GussNumberGame(List<Integer> answers) {
+    this.answers = answers;
+  }
+
+  public List<Entry<String, String>> guss(String input) {
+    List<Integer> numbers = parseInput(input);
 
     int correctCount = 0;
     int wrongPositionCount = 0;
@@ -30,9 +32,19 @@ public class GussNumberGame {
       }
     }
 
-    String str = String.format("%sA%sB", correctCount, wrongPositionCount);
+    String output = formatOutput(correctCount, wrongPositionCount);
     Map<String, String> map = new HashMap<>();
-    map.put(input, str);
+    map.put(input, output);
     return new ArrayList<>(map.entrySet());
+  }
+
+  private String formatOutput(int correctCount, int wrongPositionCount) {
+    return String.format("%sA%sB", correctCount, wrongPositionCount);
+  }
+
+  private List<Integer> parseInput(String input) {
+    return Arrays.stream(input.split(" "))
+        .map(Integer::parseInt)
+        .collect(Collectors.toList());
   }
 }
