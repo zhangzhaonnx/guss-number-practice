@@ -21,14 +21,19 @@ public class GussNumberGame {
   public List<Entry<String, String>> guss(String input) {
     List<Integer> numbers = parseInput(input);
 
-    Set numberSet = new HashSet(numbers);
-    if (numberSet.size() < numbers.size()) {
-      String output = "Wrong Input, input again";
-      Map<String, String> map = new HashMap<>();
-      map.put(input, output);
-      return new ArrayList<>(map.entrySet());
+    String output;
+    if (!checkNumbers(numbers)) {
+      output = "Wrong Input, input again";
+    } else {
+      output = doGuess(numbers);
     }
 
+    Map<String, String> map = new HashMap<>();
+    map.put(input, output);
+    return new ArrayList<>(map.entrySet());
+  }
+
+  private String doGuess(List<Integer> numbers) {
     int correctCount = 0;
     int wrongPositionCount = 0;
     for (int i = 0; i < numbers.size(); i++) {
@@ -42,10 +47,12 @@ public class GussNumberGame {
       }
     }
 
-    String output = formatOutput(correctCount, wrongPositionCount);
-    Map<String, String> map = new HashMap<>();
-    map.put(input, output);
-    return new ArrayList<>(map.entrySet());
+    return formatOutput(correctCount, wrongPositionCount);
+  }
+
+  private boolean checkNumbers(List<Integer> numbers) {
+    Set numberSet = new HashSet(numbers);
+    return numberSet.size() == numbers.size();
   }
 
   private String formatOutput(int correctCount, int wrongPositionCount) {
