@@ -31,4 +31,31 @@ class GuessNumberGameTest {
 
     Assert.assertEquals("1A1B", result);
   }
+
+  @Test
+  void should_return_0A4B_when_guess_number_given_answer_is_1234_and_guess_is_4321() {
+    GussNumberGame guessNumberGame = new GussNumberGame("1234");
+
+    String result = guessNumberGame.guess("4321");
+
+    Assert.assertEquals("0A4B", result);
+  }
+
+  @Test
+  void should_return_0A1B_when_guess_number_given_answer_is_1234_and_guess_is_4567() {
+    GussNumberGame guessNumberGame = new GussNumberGame("1234");
+
+    String result = guessNumberGame.guess("4567");
+
+    Assert.assertEquals("0A1B", result);
+  }
+
+  @Test
+  void should_return_0A0B_when_guess_number_given_answer_is_1234_and_guess_is_5678() {
+    GussNumberGame guessNumberGame = new GussNumberGame("1234");
+
+    String result = guessNumberGame.guess("5678");
+
+    Assert.assertEquals("0A0B", result);
+  }
 }
