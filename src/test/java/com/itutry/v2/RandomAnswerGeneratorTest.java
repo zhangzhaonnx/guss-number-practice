@@ -1,6 +1,7 @@
 package com.itutry.v2;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -25,9 +26,7 @@ class RandomAnswerGeneratorTest {
 
     String answer = answerGenerator.generate();
 
-    long notDuplicateCount = Arrays.stream(answer.split(""))
-        .distinct()
-        .count();
-    Assert.assertEquals(answer.length(), notDuplicateCount);
+    Set<String> numbers = new HashSet<>(Arrays.asList(answer.split("")));
+    Assert.assertEquals(answer.length(), numbers.size());
   }
 }
