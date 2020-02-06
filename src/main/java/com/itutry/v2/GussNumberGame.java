@@ -14,11 +14,12 @@ public class GussNumberGame {
     int onlyNumberCorrectCount = 0;
 
     for (char num : numbers.toCharArray()) {
-      if (answer.contains(String.valueOf(num)) && answer.indexOf(num) == numbers.indexOf(num)) {
-        positionAndNumberCorrectCount ++;
-      }
-      if (answer.contains(String.valueOf(num)) && answer.indexOf(num) != numbers.indexOf(num)) {
-        onlyNumberCorrectCount ++;
+      if (answer.contains(String.valueOf(num))) {
+        if (answer.indexOf(num) == numbers.indexOf(num)) {
+          positionAndNumberCorrectCount++;
+        } else {
+          onlyNumberCorrectCount++;
+        }
       }
     }
 
