@@ -22,4 +22,13 @@ class GuessNumberGameTest {
 
     Assert.assertEquals("2A2B", result);
   }
+
+  @Test
+  void should_return_1A1B_when_guess_number_given_answer_is_1234_and_guess_is_1456() {
+    GussNumberGame guessNumberGame = new GussNumberGame("1234");
+
+    String result = guessNumberGame.guess("1456");
+
+    Assert.assertEquals("1A1B", result);
+  }
 }

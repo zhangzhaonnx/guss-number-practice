@@ -2,6 +2,7 @@ package com.itutry.v2;
 
 public class GussNumberGame {
 
+  public static final String RESULT_TEMPLATE = "%sA%sB";
   private String answer;
 
   public GussNumberGame(String answer) {
@@ -9,9 +10,18 @@ public class GussNumberGame {
   }
 
   public String guess(String numbers) {
-    if (numbers.equals(answer)) {
-      return "4A0B";
+    int positionAndNumberCorrectCount = 0;
+    int onlyNumberCorrectCount = 0;
+
+    for (char num : numbers.toCharArray()) {
+      if (answer.contains(String.valueOf(num)) && answer.indexOf(num) == numbers.indexOf(num)) {
+        positionAndNumberCorrectCount ++;
+      }
+      if (answer.contains(String.valueOf(num)) && answer.indexOf(num) != numbers.indexOf(num)) {
+        onlyNumberCorrectCount ++;
+      }
     }
-    return "2A2B";
+
+    return String.format(RESULT_TEMPLATE, positionAndNumberCorrectCount, onlyNumberCorrectCount);
   }
 }
