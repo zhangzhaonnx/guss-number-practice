@@ -5,8 +5,8 @@ public class GussNumberGame {
   private static final String RESULT_TEMPLATE = "%sA%sB";
   private String answer;
 
-  public GussNumberGame(String answer) {
-    this.answer = answer;
+  public GussNumberGame(AnswerGenerator answerGenerator) {
+    this.answer = answerGenerator.generate();
   }
 
   public String guess(String numbers) {
