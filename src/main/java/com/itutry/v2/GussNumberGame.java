@@ -3,13 +3,17 @@ package com.itutry.v2;
 public class GussNumberGame {
 
   private static final String RESULT_TEMPLATE = "%sA%sB";
+  private final AnswerValidator answerValidator;
   private String answer;
 
-  public GussNumberGame(AnswerGenerator answerGenerator) {
+  public GussNumberGame(AnswerGenerator answerGenerator, AnswerValidator answerValidator) {
     this.answer = answerGenerator.generate();
+    this.answerValidator = answerValidator;
   }
 
   public String guess(String numbers) {
+    answerValidator.validate(numbers);
+
     int positionAndNumberCorrectCount = 0;
     int onlyNumberCorrectCount = 0;
 

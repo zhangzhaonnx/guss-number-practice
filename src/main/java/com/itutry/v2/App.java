@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class App {
 
-  public static final int CHANCE_LIMIT = 8;
+  public static final int CHANCE_LIMIT = 6;
   public static final String WRIGHT_OUTPUT = "4A0B";
 
   public static void main(String[] args) {
-    GussNumberGame game = new GussNumberGame(new RandomAnswerGenerator());
+    GussNumberGame game = new GussNumberGame(new RandomAnswerGenerator(),
+        new SimpleAnswerValidator());
     Scanner scanner = new Scanner(System.in);
     List<Record> records = new ArrayList<>();
 
