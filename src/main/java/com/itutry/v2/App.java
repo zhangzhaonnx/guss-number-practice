@@ -23,16 +23,19 @@ public class App {
     while (count < CHANCE_LIMIT) {
       System.out.println("请输入猜测的数字：");
       String input = scanner.nextLine();
-      String output = game.guess(input);
+      try {
+        String output = game.guess(input);
+        records.add(new Record(input, output));
+        printRecords(records);
 
-      records.add(new Record(input, output));
-      printRecords(records);
-
-      if (output.equals(WRIGHT_OUTPUT)) {
-        right = true;
-        break;
+        if (output.equals(WRIGHT_OUTPUT)) {
+          right = true;
+          break;
+        }
+        count++;
+      } catch (InvalidAnswerException e) {
+        System.out.println("输入不合法，请重新输入");
       }
-      count++;
     }
 
     if (right) {
