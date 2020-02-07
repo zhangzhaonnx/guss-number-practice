@@ -26,4 +26,8 @@ public class GussNumberGame {
 
     return String.format(RESULT_TEMPLATE, positionAndNumberCorrectCount, onlyNumberCorrectCount);
   }
+
+  public String getAnswer() {
+    return answer;
+  }
 }
